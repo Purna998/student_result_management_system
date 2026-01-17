@@ -108,10 +108,3 @@ StudentResultManagement/
 4.  **Declare Results**: Enter marks for students based on their subjects.
 5.  **View Results**: Go to the public homepage or "Student Result" section to search and view results.
 
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
-
-## 📄 License
-
-This project is licensed under the MIT License.
