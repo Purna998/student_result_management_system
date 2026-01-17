@@ -1,0 +1,44 @@
+{%extends 'admin_base.html'%}
+
+{%block content%}
+
+<div class="container-fluid">
+    <h2 class="mb-4"><i class="fas fa-plus-circle me-1"></i>Create Student Class</h2>
+    {% if messages%}
+    {% for m in messages%}
+    <div class="alert alert-{%if m.tags == 'error' %}danger{%else%}success{%endif%} alert-dismissible fade show"
+        roles="alert">
+        {{m}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {%endfor%}
+    {% endif %}
+    <form method="post">
+        {%csrf_token%}
+        <div class="mb-3">
+            <label for="classname" class="form-label">Class Name</label>
+            <input type="text" class="form-control" id="classname" name="classname" required
+                placeholder="Enter Class Name">
+            <small class="text-muted">e.g. First, Second, Sixth</small>
+        </div>
+
+        <div class="mb-3">
+            <label for="classnamenumeric" class="form-label">Class Numeric</label>
+            <input type="text" class="form-control" id="classnamenumeric" name="classnamenumeric" required
+                placeholder="Enter Numeric Class Name">
+            <small class="text-muted">e.g. 1, 2, 6</small>
+        </div>
+
+        <div class="mb-3">
+            <label for="section" class="form-label">Section</label>
+            <input type="text" class="form-control" id="section" name="section" required
+                placeholder="Enter Section Name">
+            <small class="text-muted">e.g. A, B, C</small>
+        </div>
+
+        <button class="btn btn-dark">
+            <i class="fas fa-check-circle me-1"></i> Submit
+        </button>
+    </form>
+</div>
+{%endblock%}

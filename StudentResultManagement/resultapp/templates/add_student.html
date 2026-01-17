@@ -1,0 +1,72 @@
+{%extends 'admin_base.html'%}
+
+{%block content%}
+
+<div class="container-fluid">
+    <h2 class="mb-4"><i class="fas fa-user-plus me-1"></i>Add Student</h2>
+    {% if messages%}
+    {% for m in messages%}
+    <div class="alert alert-{%if m.tags == 'error' %}danger{%else%}success{%endif%} alert-dismissible fade show"
+        roles="alert">
+        {{m}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {%endfor%}
+    {% endif %}
+    <form method="post">
+        {%csrf_token%}
+        <div class="mb-3">
+            <label for="fullname" class="form-label">FullName</label>
+            <input type="text" class="form-control" id="fullname" name="fullname" required
+                placeholder="Enter Full Name">
+
+        </div>
+
+        <div class="mb-3">
+            <label for="rollid" class="form-label">Roll ID</label>
+            <input type="text" class="form-control" id="rollid" name="rollid" required placeholder="Enter Roll ID"
+                maxlength="5">
+        </div>
+
+        <div class="mb-3">
+            <label for="gender" class="form-label">Gender</label><br>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" id="gender" name="gender" value="Male" required checked>
+                <label for="gender" class="form-check-label">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" id="gender" name="gender" value="Female" required>
+                <label for="gender" class="form-check-label">Female</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="emailid" class="form-label">Email ID</label>
+            <input type="email" class="form-control" id="emailid" name="emailid" required placeholder="Enter Email ID">
+        </div>
+
+        <div class="mb-3">
+            <label for="class" class="form-label">Select Class</label>
+            <select class="form-select" id="class" name="class" required>
+                <option value="">--Select Class--</option>
+                {%for class in classes%}
+                <option value="{{class.id}}">{{class.class_name}} - Section {{class.section}}</option>
+                {%endfor%}
+
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="dob" class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" id="dob" name="dob" required placeholder="Enter Email ID"
+                maxlength="5">
+        </div>
+
+
+
+        <button class="btn btn-dark">
+            <i class="fas fa-check-circle me-1"></i> Submit
+        </button>
+    </form>
+</div>
+{%endblock%}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow">
+                <div class="card-header text-center bg-dark text-white">
+                    <h4><i class="fas fa-graduation-cap me-2"></i>Search Result</h4>
+                </div>
+                <div class="card-body">
+
+                    {% if error %}
+                    <div class="alert alert-danger text-center">{{error}}</div>
+                    {%endif%}
+
+                    <form method="post" action="{% url 'check_result'%}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="roll_id" class="form-label"><i class="fas fa-user"></i> Enter your Roll
+                                ID</label>
+                            <input type="text" class="form-control" id="rollid" name="rollid"
+                                placeholder="Enter Roll ID" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="class" class="form-label">Select Class</label>
+                            <select class="form-select" id="class" name="class" required>
+                                <option value="">--Select Class--</option>
+                                {%for class in classes%}
+                                <option value="{{class.id}}">{{class.class_name}} - Section {{class.section}}</option>
+                                {%endfor%}
+
+                            </select>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-dark w-100"><i class="fas fa-search"></i>
+                            Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

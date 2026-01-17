@@ -1,0 +1,63 @@
+{%extends 'admin_base.html'%}
+
+{%block content%}
+
+<div class="container-fluid">
+    <h2 class="mb-4"><i class="fas fa-users me-1"></i>Manage Students</h2>
+    {% if messages%}
+    {% for m in messages%}
+    <div class="alert alert-{%if m.tags == 'error' %}danger{%else%}success{%endif%} alert-dismissible fade show"
+        roles="alert">
+        {{m}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {%endfor%}
+    {% endif %}
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>S.No</th>
+                <th>Student Name</th>
+                <th>Roll ID</th>
+                <th>Class</th>
+                <th>Registration Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {%for student in students%}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{student.name}}</td>
+                <td>{{student.roll_id}}</td>
+                <td>{{student.student_class}}</td>
+                <td>{{student.registration_date}}</td>
+                <td>
+                    {% if student.status == 1 %}
+                    <span class="badge bg-success">Active</span>
+                    {% else %}
+                    <span class="badge bg-danger">Inactive</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{%url 'edit_student' student.id%}" class="btn btn-primary btn-sm"><i
+                            class="fas fa-edit me-1"></i>Edit</a>
+                    <a href="" class="btn btn-warning btn-sm"><i class="fas fa-check me-1"></i>View
+                        Result</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7" class="text-center">No students found</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+
+    </table>
+
+</div>
+{%endblock%}
