@@ -24,8 +24,8 @@ LOGIN_URL='/admin_login/'
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-a%l5e)#hp#3=$v75vxteo6e7iba07ty1vm&l1_u&c)fff5zti$"
-SECRET_KEY=os.environ.get("SECRET_KEY")
+
+SECRET_KEY=os.environ.get("django-insecure-a%l5e)#hp#3=$v75vxteo6e7iba07ty1vm&l1_u&c)fff5zti$")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
