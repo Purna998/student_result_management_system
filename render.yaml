@@ -22,3 +22,15 @@ services:
 
       - key: DEBUG
         value: false
+
+      - key: DJANGO_SUPERUSER_USERNAME
+        value: admin
+
+      - key: DJANGO_SUPERUSER_EMAIL
+        value: admin@example.com
+
+      - key: DJANGO_SUPERUSER_PASSWORD
+        value: admin
+
+      - key: PYTHON_VERSION
+        value: 3.10.12
