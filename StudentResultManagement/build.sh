@@ -7,10 +7,5 @@ python manage.py collectstatic --no-input
 
 python manage.py migrate
 
-if [[ $DJANGO_SUPERUSER_USERNAME ]]; then
-  echo "Attemping to create superuser..."
-  python manage.py createsuperuser \
-    --no-input \
-    --username $DJANGO_SUPERUSER_USERNAME \
-    --email $DJANGO_SUPERUSER_EMAIL || echo "Superuser creation skipped (it might already exist or the password didn't meet requirements)."
-fi
+# Use the custom script to ensure the superuser exists with the correct password
+python ensure_superuser.py
