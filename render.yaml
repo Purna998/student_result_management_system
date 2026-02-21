@@ -30,7 +30,7 @@ services:
         value: admin@example.com
 
       - key: DJANGO_SUPERUSER_PASSWORD
-        value: admin
+        value: Admin@123456
 
       - key: PYTHON_VERSION
         value: 3.10.12
